@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Catálogo con OpenAI</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    input, button { padding: 10px; margin: 5px; }
+    .producto { border: 1px solid #ccc; padding: 10px; margin: 10px 0; border-radius: 8px; }
+  </style>
+</head>
+<body>
+  <h1>Buscador de Productos (Simulación con OpenAI)</h1>
+  <input id="query" type="text" placeholder="Ej: celulares baratos" size="40"/>
+  <button onclick="buscarProductos()">Buscar</button>
+
+  <div id="resultados"></div>
+
+  <script>
+    async function buscarProductos() {
+      const query = document.getElementById("query").value;
+      const resultadosDiv = document.getElementById("resultados");
+      resultadosDiv.innerHTML = "<p>Generando catálogo...</p>";
+
+      const API_KEY = "https://api.openai.com/v1/chat/completions"; 
+
+      const response = await fetch("https://api.openai.com/v1/chat/completions", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${API_KEY}`
+        },
+        body: JSON.stringify({
+          model: "gpt-4o-mini",
+          messages: [
+            { role: "system", content: "Eres un asistente que crea catálogos de productos simulados con título, precio y descripción en HTML." },
+            { role: "user", content: `Genera un catálogo de productos en venta según esta búsqueda: ${query}` }
+          ]
+        })
+      });
+
+      const data = await response.json();
+      const respuesta = data.choices[0].message.content;
+
+      resultadosDiv.innerHTML = respuesta;
+    }
+  </script>
+</body>
+</html>

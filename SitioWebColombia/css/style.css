@@ -271,7 +271,7 @@ html{
   margin-bottom: 2%;
 }
  
-.texto-fauna,.texto,.texto-flora, .texto-cafe {
+.texto-fauna,.texto,.texto-flora, .texto-cafe, .texto-tienda {
   padding: 1.5%;
   background-color: #fff;
   border-radius: 12px;
@@ -296,7 +296,7 @@ html{
 
 
 /*********************** CAFE ****************/
-.slider-cafe {
+.slider-tienda, .slider-cafe {
   display: flex;
   gap: 20px;
   overflow: hidden; /* Oculta lo que sale */
@@ -304,8 +304,8 @@ html{
   position: relative;
 }
  
-.slider-cafe::before,
-.slider-cafe::after {
+.slider-tienda, .slider-cafe::before,
+.slider-tienda, .slider-cafe::after {
   content: "";
   position: absolute;
   top: 0;
@@ -314,23 +314,23 @@ html{
   z-index: 2;
 }
  
-.slider-cafe::before {
+.slider-tienda,.slider-cafe::before {
   left: 0;
   background: linear-gradient(to right, #f8f8f8, transparent);
 }
  
-.slider-cafe::after {
+.slider-tienda,.slider-cafe::after {
   right: 0;
   background: linear-gradient(to left, #f8f8f8, transparent);
 }
  
-.slider-cafe .slider-track {
+.slider-cafe .slider-track, .slider-tienda, .slider-track-tienda{
   display: flex;
   gap: 20px;
   animation: scroll 20s linear infinite;
 }
  
-.slider-cafe img {
+.slider-tienda, .slider-cafe img {
   flex: 0 0 auto;
   width: 220px;
   height: auto;
@@ -355,11 +355,12 @@ html{
 
 /* *******************Fauna**************** */
 
-.fauna-tarjetas, .flora-tarjetas, .cafe, .musica-tarjetas, .geografia-tarjetas {
+.fauna-tarjetas, .flora-tarjetas, .cafe, .musica-tarjetas, .geografia-tarjetas, .tienda, .buscarTienda {
   padding: 2.5% 3.5%;
   background-color: #f8f8f8;
   max-width: 85%;
   margin: 0 auto;
+  text-align: center;
 }
 .header {
   text-align: center;
@@ -385,6 +386,10 @@ html{
   text-align: center;
   flex: 1 1 300px;   /* Cada tarjeta ocupa mínimo 300px */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.buscarTienda{
+  padding: 1.5%, 3.5%;
+  background-color: #fff;
 }
  
 .contenedor-tarjetas article:hover {
